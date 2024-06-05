@@ -28,8 +28,8 @@ def collect_data(data_type):
     days = int(days)
     for day in range(1, days + 1):  
         entry = check_number(f"Digite o valor de {data_type} para o dia {day}: ")
-        if data_type == "ph":
-            while entry > 12 or entry < 0:
+        if data_type == "ph": # Torna os dados realacionados a ph limitados a 12
+            while entry > 12 or entry < 0:  
                 entry = check_number(f"Digite o valor de {data_type}, em um intervalo válido(0 a 12), para o dia {day}: ")
         data.append(entry)
     return data
@@ -111,7 +111,7 @@ def main():
             while True:
                 data_type = input("Escolha o tipo de dado para inserir (ph, temperatura, nível do mar) ou 'sair' para finalizar: ").lower()
                 if data_type == 'sair':
-                    break  # Sai do loop se o usuário digitar 'sair'
+                    break  
                 elif data_type in ['ph', 'temperatura', 'nível do mar']:
                     data = collect_data(data_type)  # Coleta os dados do usuário
                     plot_data(data, data_type)  # Plota os dados coletados
